@@ -1,0 +1,40 @@
+body {
+  margin: 0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  background: linear-gradient(180deg,#07142a 0%, #0b1220 100%);
+  color: #e6eef6;
+}
+
+.app-root { min-height:100vh; display:flex; flex-direction:column }
+.hero { padding:6vh 6vw; display:flex; align-items:flex-start; justify-content:flex-start; min-height:70vh }
+.content { max-width:760px }
+.headline { font-size:clamp(28px,6vw,56px); line-height:1.05; margin:0 0 12px; font-weight:700 }
+.typed { color:#7dd3fc }
+.cursor { display:inline-block; margin-left:6px; animation:blink 900ms steps(2,end) infinite }
+@keyframes blink { 50% { opacity:0 } }
+.sub { color:#94a3b8; margin-top:6px }
+.controls { margin-top:22px; display:flex; gap:12px }
+.btn { background:linear-gradient(90deg, rgba(125,211,252,0.12), rgba(125,211,252,0.06));
+       border:1px solid rgba(125,211,252,0.12); padding:10px 14px; border-radius:10px;
+       color:#7dd3fc; cursor:pointer }
+.btn.ghost { background:transparent; border:1px dashed rgba(255,255,255,0.06); color:#94a3b8 }
+
+.pixel-panel { position:fixed; top:0; right:0; height:100vh; width:0; pointer-events:none; overflow:hidden; z-index:60 }
+.pixel-panel.open { width:60vw; pointer-events:auto }
+.pixel-grid { position:absolute; inset:0; display:grid; gap:3px; padding:24px }
+.pixel { width:100%; aspect-ratio:1/1; border-radius:2px; background:transparent; transform:scale(0); opacity:0 }
+.pixel.enter { background:linear-gradient(180deg, rgba(125,211,252,0.25), rgba(125,211,252,0.06));
+               transform:scale(1); opacity:1; transition:transform 420ms, opacity 420ms }
+.pixel.exit { transform:scale(0); opacity:0; transition:transform 280ms, opacity 240ms }
+.panel-content { position:absolute; top:0; right:0; height:100%; width:60vw;
+                 display:flex; flex-direction:column; align-items:flex-start; justify-content:flex-start;
+                 padding:48px 40px }
+.panel-inner { backdrop-filter: blur(6px); background:rgba(4,8,15,0.6); border-radius:12px;
+               padding:22px; max-width:420px }
+.close-btn { align-self:flex-end; background:transparent; border:1px solid rgba(255,255,255,0.06);
+             padding:6px 10px; border-radius:8px; color:#94a3b8; cursor:pointer }
+
+@media (max-width:800px) {
+  .pixel-panel.open { width:100vw }
+  .panel-content { width:100vw }
+}
